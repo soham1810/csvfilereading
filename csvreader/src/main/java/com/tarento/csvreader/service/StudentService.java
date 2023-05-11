@@ -5,6 +5,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
 import com.tarento.csvreader.dto.Student;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.io.Reader;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class StudentService {
 
     public List<Student> getStudent(MultipartFile file) {
