@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 @Service
@@ -27,8 +28,9 @@ public class StudentService {
             for (String[] row : rows) {
                 String rollNo = row[0];
                 String dob = row[1];
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 Student build = Student.builder().build();
-                build.setDob(LocalDate.parse(dob));
+                build.setDob(LocalDate.parse(dob, formatter));
                 build.setRollNo(Integer.parseInt(rollNo));
                 studentList.add(build);
             }
