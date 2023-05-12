@@ -45,7 +45,7 @@ public class StudentService {
      */
     public List<StudentDTO> getStudentFromFile(MultipartFile file) {
         List<StudentDTO> studentList = new ArrayList<>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
         try {
             Reader reader = new InputStreamReader(file.getInputStream());
