@@ -133,4 +133,18 @@ public class StudentService {
         return studentDTOList;
     }
 
+    public List<StudentDTO> getPaginatedListByDate(String startDate, String endDate, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        List<Student> studentList = studentRepository
+                .findAllByDobBetween(getDateFromString(startDate), getDateFromString(endDate), pageable);
+
+        List<StudentDTO> studentDTOList = studentList.stream()
+                .map(student -> StudentDTO.builder()
+                        .rollNo(student.getRollNo())
+                        .dob(student.getDob().toString())
+                        .build()
+                ).collect(Collectors.toList());
+
+        return studentDTOList;
+    }
 }

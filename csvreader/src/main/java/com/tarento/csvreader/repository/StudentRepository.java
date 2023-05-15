@@ -15,4 +15,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("select std from Student std where std.rollNo = ?1")
     List<Student> findStudentRegistrationNo(String rollNo, Pageable pageable);
 
+    List<Student> findAllByDobBetween(Date startDate,Date endDate, Pageable pageable);
+
 }

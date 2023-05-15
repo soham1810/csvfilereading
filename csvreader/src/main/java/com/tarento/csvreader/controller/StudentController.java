@@ -47,4 +47,15 @@ public class StudentController {
 
         return new ResponseEntity<>(studentService.findAllStudent(), HttpStatus.ACCEPTED);
     }
+
+    @GetMapping("/student/get/dob/page")
+    public ResponseEntity<List<StudentDTO>> getStudentByDOB(@RequestParam("startDate") String startDate,
+                                                            @RequestParam("endDate") String endDate,
+                                                            @RequestParam("page") int page,
+                                                            @RequestParam("size") int size) {
+
+        List<StudentDTO> studentList = studentService.getPaginatedListByDate(startDate, endDate, page, size);
+
+        return new ResponseEntity<>(studentList, HttpStatus.ACCEPTED);
+    }
 }
