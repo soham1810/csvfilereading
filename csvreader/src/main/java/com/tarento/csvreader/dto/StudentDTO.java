@@ -18,6 +18,9 @@ public class StudentDTO {
     @JsonProperty("dob")
     private String dob;
 
+    @JsonProperty("status")
+    private String status;
+
 
 
 }

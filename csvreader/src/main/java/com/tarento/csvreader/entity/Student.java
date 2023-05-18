@@ -24,4 +24,7 @@ public class Student {
 
     @Column(name="dob")
     private Date dob;
+
+    @Column(name="status")
+    private String status;
 }

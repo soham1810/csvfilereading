@@ -127,6 +127,7 @@ public class StudentService {
                 .map(student -> StudentDTO.builder()
                         .rollNo(student.getRollNo())
                         .dob(student.getDob().toString())
+                        .status(student.getStatus())
                         .build()
                 ).collect(Collectors.toList());
 
@@ -136,12 +137,13 @@ public class StudentService {
     public List<StudentDTO> getPaginatedListByDate(String startDate, String endDate, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         List<Student> studentList = studentRepository
-                .findAllByDobBetween(getDateFromString(startDate), getDateFromString(endDate), pageable);
+                .findAllByDobBetweenOrderByDob(getDateFromString(startDate), getDateFromString(endDate), pageable);
 
         List<StudentDTO> studentDTOList = studentList.stream()
                 .map(student -> StudentDTO.builder()
                         .rollNo(student.getRollNo())
                         .dob(student.getDob().toString())
+                        .status(student.getStatus())
                         .build()
                 ).collect(Collectors.toList());
 
